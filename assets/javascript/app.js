@@ -2,8 +2,8 @@ var questionNumber = 1;
 var currentQuestion;
 var intervalId;
 var answerText;
-
-var lossImgArray = ["assets/images/2-advanced.jpg", "img2src"];
+var winImageArray = ["https://giphy.com/gifs/a0h7sAqON67nO/html5", "https://giphy.com/gifs/zaqclXyLz3Uoo/html5"];
+var lossImgArray = ["https://giphy.com/gifs/fV2nYFD3akDuTUgVhy/html5", "https://giphy.com/gifs/ceeN6U57leAhi/html5"];
 var gameShow = {
     time: 24,
     questionsRight: 0,
@@ -29,7 +29,7 @@ var gameShow = {
     },
     displayQuestion() {
         if (gameShow.numberOfQuestions === 0) {
-            summary();
+            gameShow.summary();
         } else {
             $("#answerCol").empty();
             gameShow.time = 24;
@@ -48,23 +48,37 @@ var gameShow = {
                 answerDiv.text(answerText);
                 $("#answerCol").append(answerDiv);
             }
-            //Add event listener here??
-            console.log(this);
+            //On Click functionality
             $(".button").on("click", function () {
                 var buttonNumber = $(this).attr("value");
-                console.log(this);
-                console.log("Button # " + buttonNumber);
-                console.log("Correct answer: " + currentQuestion.correctAnswer);
-                if (buttonNumber === gameShow.question1.correctAnswer) {
+                if (buttonNumber === currentQuestion.correctAnswer) {
                     //trigger win
-                    gameShow.questionsRight++;
-                    console.log("button pushed!");
-                    displayQuestion();
+                    gameShow.triggerWin();
+                    // clearInterval(intervalId);
+                    // gameShow.questionsRight++;
+                    // $("#timerText").text(" ");
+                    // var randomImgNum = Math.floor(Math.random() * 2);
+                    // var winImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", "assets/images/win1.png");
+                    // $("#imgCol").append(winImg);
+                    // $("."+ buttonNumber).attr("border", "solid red");
+                    // setTimeout(function () {
+                    //     $("#imgCol").empty();
+                    //     gameShow.displayQuestion();
+                    // }, 5000);
 
                 } else {
-                    gameShow.questionsWrong++;
-                    displayQuestion();
-                    console.log("button pushed!");
+                    gameShow.triggerLoss();
+                    // clearInterval(intervalId);
+                    // clearInterval(intervalId);
+                    // gameShow.questionsWrong++;
+                    // $("#timerText").text(" ");
+                    // var randomImgNum = Math.floor(Math.random() * 2);
+                    // var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", "assets/images/fail.jpg");
+                    // $("#imgCol").append(lossImg);
+                    // setTimeout(function () {
+                    //     $("#imgCol").empty();
+                    //     gameShow.displayQuestion();
+                    // }, 5000);
                 }
             })
             questionNumber++;
@@ -78,25 +92,53 @@ var gameShow = {
         $("#timerText").text(gameShow.time);
         gameShow.time--;
         if (gameShow.time === (-1)) {
-            $("#timerText, #questionText").text(" ");
-            $("#answerCol").empty();
+            // $("#timerText, #questionText").text(" ");
+            // $("#answerCol").empty();
             clearInterval(intervalId);
-
-            var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", lossImgArray[questionNumber - 2]);
-            $("#imgCol").append(lossImg);
             gameShow.questionsWrong++;
+            $("#timerText").text(" ");
+            var randomImgNum = Math.floor(Math.random() * 2);
+            var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", lossImgArray[randomImgNum]);
+            $("#imgCol").append(lossImg);
             setTimeout(function () {
                 $("#imgCol").empty();
                 gameShow.displayQuestion();
             }, 5000);
         }
     },
+    triggerWin: function () {
+        clearInterval(intervalId);
+        gameShow.questionsRight++;
+        $("#timerText").text(" ");
+        var randomImgNum = Math.floor(Math.random() * 2);
+        var winImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", "assets/images/win1.png");
+        $("#imgCol").append(winImg);
+        $("." + currentQuestion.correctAnswer).attr("style", "border: solid 2px red;");
+        setTimeout(function () {
+            $("#imgCol").empty();
+            gameShow.displayQuestion();
+        }, 5000);
+    },
+    triggerLoss: function () {
+        clearInterval(intervalId);
+        clearInterval(intervalId);
+        gameShow.questionsWrong++;
+        $("#timerText").text(" ");
+        var randomImgNum = Math.floor(Math.random() * 2);
+        var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", "assets/images/fail.jpg");
+        $("#imgCol").append(lossImg);
+        $("." + currentQuestion.correctAnswer).attr("style", "border: solid 2px red;");
+        setTimeout(function () {
+            $("#imgCol").empty();
+            gameShow.displayQuestion();
+        }, 5000);
+
+    },
     summary: function () {
         //shows the final results
+        $("#timerCol, #imgCol, #answerCol, #questionCol").empty();
+        $("#questionCol").html("<h2> Answers Correct: " + gameShow.questionsRight + "</h2> <br> <h2> Answers Wrong: " + gameShow.questionsWrong + "</h2>");
+
     }
 
 }
-
-//On Click function for answer choices
-//Need to make it check if the answer is correct...
-//Then do win or loss

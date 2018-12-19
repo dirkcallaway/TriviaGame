@@ -9,54 +9,55 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="css/text" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Terrible Trivia</title>
+    <title>Coloradical Trivia</title>
 </head>
 
 <body>
     <div class="container">
         <!--Page Banner-->
-        <div class="row">
+        <div id="bannerRow" class="row">
             <div class="col-md-12">
-                <h1 class="text-center">Trivia Game Banner</h1>
+                <h1 id="banner" class="text-center"><span id="red">Co</span><span id="orange">lo</span>radical Trivia
+                    Game</h1>
             </div>
         </div>
 
         <!--Main Content-->
-
-        <!--Timer Row-->
-        <div class="row">
-            <div id="timerCol" class="col-md-8 offset-md-2">
-                <h3 id="timerText"></h3>
+            <!--Timer Row-->
+            <div class="row">
+                <div id="timerCol" class="col-md-8 offset-md-2">
+                    <h3 id="timerText" class="text-center"></h3>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div id="imgCol" class="col-md-8 offset-md-2">
+            <!--Image Row-->
+            <div class="row">
+                <div id="imgCol" class="col-md-8 offset-md-2">
+                </div>
             </div>
-        </div>
 
-        <!--Question Row-->
-        <div class="row">
-            <div id="questionCol" class="col-md-12">
-                <h3 id="questionText"></h3>
+            <!--Question Row-->
+            <div class="row">
+                <div id="questionCol" class="col-md-12">
+                    <h3 id="questionText"></h3>
+                </div>
             </div>
-        </div>
 
-        <!--Answer Choices Row-->
-        <div class="row">
-            <div id="answerCol" class="col-md-12">
-                
+            <!--Answer Choices Row-->
+            <div class="row">
+                <div id="answerCol" class="col-md-12">
+
+                </div>
             </div>
-        </div>
     </div>
 
     <!-- Optional JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

@@ -1,0 +1,23 @@
+body{
+    background-image: url("../images/bells.jpg");
+}
+#banner{
+    border-top-style: solid;
+    border-top-color: blue;
+    border-top-width: 10px;
+    border-bottom-style: solid;
+    border-bottom-color: blue;
+    border-bottom-width: 10px;
+}
+
+#red{
+    color:red;
+}
+
+#orange{
+    color:orange;
+}
+
+#questionCol{
+    background-color: darkmagenta;
+}
