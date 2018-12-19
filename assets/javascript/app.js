@@ -48,6 +48,25 @@ var gameShow = {
                 answerDiv.text(answerText);
                 $("#answerCol").append(answerDiv);
             }
+            //Add event listener here??
+            console.log(this);
+            $(".button").on("click", function () {
+                var buttonNumber = $(this).attr("value");
+                console.log(this);
+                console.log("Button # " + buttonNumber);
+                console.log("Correct answer: " + currentQuestion.correctAnswer);
+                if (buttonNumber === gameShow.question1.correctAnswer) {
+                    //trigger win
+                    gameShow.questionsRight++;
+                    console.log("button pushed!");
+                    displayQuestion();
+
+                } else {
+                    gameShow.questionsWrong++;
+                    displayQuestion();
+                    console.log("button pushed!");
+                }
+            })
             questionNumber++;
             gameShow.numberOfQuestions--;
         }
@@ -81,19 +100,3 @@ var gameShow = {
 //On Click function for answer choices
 //Need to make it check if the answer is correct...
 //Then do win or loss
-console.log("Hey hey");
-$(".button").on("click", function(){
-    var buttonNumber = $(this).val();
-    console.log(this);
-    if(buttonNumber === gameShow.question1.correctAnswer){
-        //trigger win
-        questionsRight++;
-        console.log("button pushed!");
-        displayQuestion();
-        
-    } else{
-        questionsWrong++;
-        displayQuestion();
-        console.log("button pushed!");
-    }
-})
