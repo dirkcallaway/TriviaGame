@@ -2,8 +2,8 @@ var questionNumber = 1;
 var currentQuestion;
 var intervalId;
 var answerText;
-var winImageArray = ["https://giphy.com/gifs/a0h7sAqON67nO/html5", "https://giphy.com/gifs/zaqclXyLz3Uoo/html5"];
-var lossImgArray = ["https://giphy.com/gifs/fV2nYFD3akDuTUgVhy/html5", "https://giphy.com/gifs/ceeN6U57leAhi/html5"];
+var winImageArray = ["assets/images/winning.gif", "assets/images/winwin.gif"];
+var lossImgArray = ["assets/images/wrong.gif", "assets/images/wrongwrong.gif"];
 var gameShow = {
     time: 24,
     questionsRight: 0,
@@ -170,7 +170,7 @@ var gameShow = {
         gameShow.questionsRight++;
         $("#timerText").text(" ");
         var randomImgNum = Math.floor(Math.random() * 2);
-        var winImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", "assets/images/win1.png");
+        var winImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", winImageArray[randomImgNum]);
         $("#imgCol").append(winImg);
         $("." + currentQuestion.correctAnswer).attr("style", "border: solid 2px red;");
         setTimeout(function () {
@@ -183,7 +183,7 @@ var gameShow = {
         gameShow.questionsWrong++;
         $("#timerText").text(" ");
         var randomImgNum = Math.floor(Math.random() * 2);
-        var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", "assets/images/fail.jpg");
+        var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", lossImgArray[randomImgNum]);
         $("#imgCol").append(lossImg);
         $("." + currentQuestion.correctAnswer).attr("style", "border: solid 2px red;");
         setTimeout(function () {
