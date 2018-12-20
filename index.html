@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="mainArea">
         <!--Page Banner-->
         <div id="bannerRow" class="row">
             <div class="col-md-12">
@@ -25,23 +25,24 @@
         </div>
 
         <!--Main Content-->
-            <!--Timer Row-->
-            <div class="row">
-                <div id="timerCol" class="col-md-8 offset-md-2">
-                    <h3 id="timerText" class="text-center"></h3>
-                </div>
+        <!--Timer Row-->
+        <div class="row">
+            <div id="timerCol" class="col-md-8 offset-md-2">
+                <h3 id="timerText" class="text-center"></h3>
             </div>
+        </div>
 
-            <!--Image Row-->
-            <div class="row">
-                <div id="imgCol" class="col-md-8 offset-md-2">
-                </div>
+        <!--Image Row-->
+        <div class="row">
+            <div id="imgCol" class="col-md-8 offset-md-2">
+                <button id="start" class="btn btn-success">Start Quiz</button>
             </div>
-
+        </div>
+        <div class="card-body">
             <!--Question Row-->
             <div class="row">
                 <div id="questionCol" class="col-md-12">
-                    <h3 id="questionText"></h3>
+                    <h3 id="questionText" class="text-center"></h3>
                 </div>
             </div>
 
@@ -51,6 +52,7 @@
 
                 </div>
             </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
