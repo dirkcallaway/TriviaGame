@@ -26,7 +26,8 @@ body{
     color:orange;
 }
 
-.button{
+.button,
+.summary{
     font-size: large;
     font-weight: bold;
     color: white;

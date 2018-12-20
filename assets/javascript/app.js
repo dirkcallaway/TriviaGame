@@ -195,7 +195,7 @@ var gameShow = {
     summary: function () {
         //shows the final results
         $("#timerCol, #imgCol, #answerCol, #questionCol").empty();
-        $("#questionCol").html("<h2> Answers Correct: " + gameShow.questionsRight + "</h2> <br> <h2> Answers Wrong: " + gameShow.questionsWrong + "</h2>");
+        $("#questionCol").html("<h2 class='summary'> Answers Correct: " + gameShow.questionsRight + "</h2> <br> <h2 class='summary'> Answers Wrong: " + gameShow.questionsWrong + "</h2>");
         $("#imgCol").html("<button id='start' class='btn btn-success'>Restart Quiz</button>");
     }
 
