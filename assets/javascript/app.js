@@ -94,10 +94,10 @@ var gameShow = {
         question: "What does the blue color in Colorado's state flag stand for?",
         answerChoices: ["Sample choice one.", "Sample choice two.", "Sample choice three.", "The correct choice."],
         correctAnswer: "3",
-        choice1: "The Lakes resevoirs",
+        choice1: "The Lakes & Resevoirs",
         choice2: "Nothing",
-        choice3: "The blue sky",
-        choice4: "The blue corn"
+        choice3: "The Blue Sky",
+        choice4: "Blue Corn"
     },
     question11: {
         question: "What Colorado mountains appear on the Coors beer can?",
@@ -194,14 +194,26 @@ var gameShow = {
     },
     summary: function () {
         //shows the final results
-        $("#timerCol, #imgCol, #answerCol, #questionCol").empty();
+        $("#timerText, #answerText").text(" ");
+        $("#answerCol").empty();
         $("#questionCol").html("<h2 class='summary'> Answers Correct: " + gameShow.questionsRight + "</h2> <br> <h2 class='summary'> Answers Wrong: " + gameShow.questionsWrong + "</h2>");
+        gameShow.numberOfQuestions = 11;
+        gameShow.questionsRight = 0;
+        gameShow.questionsWrong = 0;
+        questionNumber = 1;
         $("#imgCol").html("<button id='start' class='btn btn-success d-block mx-auto'>Restart Quiz</button>");
+        $("#start").on("click", function(){
+            
+            $("#start").remove();
+            $("#questionCol").html('<h3 id="questionText" class="text-center"></h3>');
+            gameShow.displayQuestion();
+        })
     }
 
 }
 
 $("#start").on("click", function(){
+    console.log("Start button pushed!");
     $("#start").remove();
     gameShow.displayQuestion();
 })
