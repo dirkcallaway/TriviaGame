@@ -2,8 +2,8 @@ var questionNumber = 1;
 var currentQuestion;
 var intervalId;
 var answerText;
-var winImageArray = ["assets/images/winning.gif", "assets/images/winwin.gif"];
-var lossImgArray = ["assets/images/wrong.gif", "assets/images/wrongwrong.gif"];
+var winImageArray = ["assets/images/winning.gif", "assets/images/winwin.gif", "assets/images/win3.gif", "assets/images/win4.gif"];
+var lossImgArray = ["assets/images/wrong.gif", "assets/images/wrongwrong.gif", "assets/images/wrong3.gif", "assets/images/nope.gif"];
 var gameShow = {
     time: 24,
     questionsRight: 0,
@@ -169,7 +169,7 @@ var gameShow = {
         clearInterval(intervalId);
         gameShow.questionsRight++;
         $("#timerText").text(" ");
-        var randomImgNum = Math.floor(Math.random() * 2);
+        var randomImgNum = Math.floor(Math.random() * 4);
         var winImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", winImageArray[randomImgNum]);
         $("#imgCol").append(winImg);
         $("." + currentQuestion.correctAnswer).attr("style", "border: solid 2px red;");
@@ -182,7 +182,7 @@ var gameShow = {
         clearInterval(intervalId);
         gameShow.questionsWrong++;
         $("#timerText").text(" ");
-        var randomImgNum = Math.floor(Math.random() * 2);
+        var randomImgNum = Math.floor(Math.random() * 4);
         var lossImg = $("<img>").addClass("fluid-img thumbnail-img d-block mx-auto").attr("src", lossImgArray[randomImgNum]);
         $("#imgCol").append(lossImg);
         $("." + currentQuestion.correctAnswer).attr("style", "border: solid 2px red;");
@@ -213,7 +213,6 @@ var gameShow = {
 }
 
 $("#start").on("click", function(){
-    console.log("Start button pushed!");
     $("#start").remove();
     gameShow.displayQuestion();
 })
